@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArmIkController : MonoBehaviour
 {
+    Punch punch;
     PlayerController player;
     Vector3 startingPosition;
     public Vector3 startingOffset;
@@ -21,7 +22,9 @@ public class ArmIkController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        punch = GetComponent<Punch>();
         startingPosition = transform.localPosition;
+        punch.startingPosition = startingPosition;
         player = GetComponentInParent<PlayerController>();
     }
 
@@ -44,7 +47,10 @@ public class ArmIkController : MonoBehaviour
         finalPosition += armDir * offsetZ * distanceZ;
 
         float p = armDir.magnitude;
-
-        transform.localPosition = Vector3.Lerp(startingPosition, finalPosition, p);
+        if(punch.isPunching != true)
+        {
+            transform.localPosition = Vector3.Lerp(startingPosition, finalPosition, p);
+        }
+        
     }
 }
