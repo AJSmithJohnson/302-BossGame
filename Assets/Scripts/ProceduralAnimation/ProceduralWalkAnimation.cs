@@ -62,5 +62,6 @@ public class ProceduralWalkAnimation : MonoBehaviour
 
         //transform.localPosition = finalPosition;
         transform.localPosition = Vector3.Lerp(startingPosition, finalPosition, p);
+
     }
 }
