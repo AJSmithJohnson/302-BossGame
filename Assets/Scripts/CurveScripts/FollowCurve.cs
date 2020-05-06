@@ -7,6 +7,9 @@ public class FollowCurve : MonoBehaviour
 
     public BezierCurve curve;
 
+
+
+
     [Range(0, 1)] public float percent = 0;
 
     public bool shouldAnimate = true;
@@ -16,6 +19,7 @@ public class FollowCurve : MonoBehaviour
 
     float timeCurrent = 0;
 
+    public bool shouldLoop = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,14 @@ public class FollowCurve : MonoBehaviour
             timeCurrent += Time.deltaTime;
             percent = timeCurrent / animationLength;
             percent = Mathf.Clamp(percent, 0, 1);
+            if(shouldLoop)
+            {
+                if (percent == 1)
+                {
+                    percent = 0;
+                    timeCurrent = 0;
+                }
+            }
         }
 
         SetPositionToCurve();
