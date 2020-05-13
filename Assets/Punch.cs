@@ -25,6 +25,11 @@ public class Punch : MonoBehaviour
             isPunching = true;
             if(percent < 1)
             percent += Time.deltaTime * punchSpeed;
+            if (alternatePunches % 2 == 0)
+            {
+                transform.position = Vector3.Lerp(startingPosition, punchTarget.position, percent);
+            }
+            
         }
         else
         {
@@ -36,10 +41,7 @@ public class Punch : MonoBehaviour
             }
 
         }
-        if(alternatePunches % 2 == 0)
-        {
-            transform.position = Vector3.Lerp(startingPosition, punchTarget.position, percent);
-        }
+       
         
     }
 }

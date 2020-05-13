@@ -7,6 +7,9 @@ public class TitleScreenManager : MonoBehaviour
     public NewBezierCurve UICurve;
     public NewBezierCurve camCurve;
     public PointAt camPointAt;
+    public AnimationScript animScript1;
+    public AnimationScript animScript2;
+    public AnimationScript animScript3;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,9 @@ public class TitleScreenManager : MonoBehaviour
     {
        if(camCurve.currentCurve != 0)
         {
+            animScript1.moveButtons = true;
+            animScript2.moveButtons = true;
+            animScript3.moveButtons = true;
             UICurve.shouldAnimate = true;
             UICurve.shouldLoop = true;
             camPointAt.wantToLookAt = true;
